@@ -1,7 +1,10 @@
+
 import Vue from 'vue'
 import App from './app.vue'
 
 import './assets/styles/global.styl'
+
+var a
 
 const root = document.createElement('div')
 document.body.appendChild(root)
