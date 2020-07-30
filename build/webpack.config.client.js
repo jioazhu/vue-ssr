@@ -13,15 +13,19 @@ const defaultPluins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin(),
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
-
 
 const devServer = {
   port: 8000,
   host: '0.0.0.0',
   overlay: {
-    errors: true,
+    errors: true
+  },
+  historyApiFallback: {
+    index: '/index.html'
   },
   hot: true
 }
@@ -41,7 +45,7 @@ if (isDev) {
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: true,
+                sourceMap: true
               }
             },
             'stylus-loader'
@@ -62,7 +66,7 @@ if (isDev) {
       vendor: ['vue']
     },
     output: {
-      filename: '[name].[chunkhash:8].js',
+      filename: '[name].[chunkhash:8].js'
     },
     module: {
       rules: [
@@ -75,7 +79,7 @@ if (isDev) {
               {
                 loader: 'postcss-loader',
                 options: {
-                  sourceMap: true,
+                  sourceMap: true
                 }
               },
               'stylus-loader'
